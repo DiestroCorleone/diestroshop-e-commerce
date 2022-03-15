@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from '../components/Navbar';
-import Home from '../components/Home';
-import About from '../components/About';
-import Footer from '../components/Footer';
-import Products from '../components/Products';
-import Cart from '../components/Cart';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import About from './components/About';
+import Footer from './components/Footer';
+import Products from './components/Products';
+import Cart from './components/Cart';
 
 export default function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
