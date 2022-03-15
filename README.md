@@ -28,7 +28,7 @@ Inspired by the [react-tutorial](https://react-tutorial.app/) [project](https://
 
 - [ ] Integration with [Stripe](https://stripe.com/es-us) for payment.
 - [ ] Pagination for the *Products* page.
-- [ ] Categorie selection for the products.
+- [ ] Category selection for the products.
 
 ## Available Scripts
 
