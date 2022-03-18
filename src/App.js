@@ -6,12 +6,12 @@ import About from './components/About';
 import Footer from './components/Footer';
 import Products from './components/Products';
 import Cart from './components/Cart';
+import ProductDetails from './components/ProductDetails';
 
 export default function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [darkMode, setDarkMode] = useState(false);
   const [cart, setCart] = useState([]);
-  const [uniqueCart, setUniqueCart] = useState([]);
 
   function toggleDarkMode() {
     setDarkMode((prevDarkMode) => !prevDarkMode);
@@ -58,7 +58,10 @@ export default function App() {
 
   function isInCart(productId) {
     try {
-      return cart.find((item) => item.id === productId).inCart;
+      return [
+        cart.find((item) => item.id === productId).inCart,
+        cart.find((item) => item.id === productId).amount,
+      ];
     } catch (e) {
       return false;
     }
@@ -79,6 +82,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route
             path="/products"
+            exact
             element={
               <Products
                 addToCart={addToCart}
@@ -88,6 +92,7 @@ export default function App() {
             }
           />
           <Route path="/cart" element={<Cart cart={cart} />} />
+          <Route path="/products/:id" element={<ProductDetails />} />
         </Routes>
         <Footer />
       </div>
