@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import StripeCheckout from 'react-stripe-checkout';
 
 export default function Cart(props) {
   const [totalPrice, setTotalPrice] = useState(0);
+  const [formData, setFormData] = useState({
+    email: '',
+  });
 
   useEffect(() => {
     let fullPrice = 0;
@@ -12,7 +16,6 @@ export default function Cart(props) {
   }, [props.cart]);
 
   const renderCart = props.cart.map((item) => {
-    console.log(totalPrice);
     return (
       <tr>
         <td>{item.title}</td>
@@ -22,6 +25,20 @@ export default function Cart(props) {
       </tr>
     );
   });
+
+  function handleFormData(event) {
+    const { name } = event.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: event.target.value,
+    }));
+  }
+
+  function handleToken(token, addresses) {
+    console.log({ token, addresses });
+  }
+
+  console.log(formData.email);
 
   return (
     <div className="col-full flex flex-column between padded-hard">
@@ -58,14 +75,21 @@ export default function Cart(props) {
             name="email"
             placeholder="email@mail.com"
             className="padded border-sm-quaternary col-third rounded-soft"
+            onChange={handleFormData}
+            value={formData.email}
           />
           <br />
-          <button className="back-quaternary col-third color-secondary rounded-soft font-bold">
-            Pay
-          </button>
+          <StripeCheckout
+            disabled={!formData.email}
+            className="col-third"
+            stripeKey="pk_test_51KeJDAKlY1GE3s6GeJ4MtQuB7HPMSfbSsbN6TSBEFHZgPa1c5RAhnujGenZqCkiFwUfmpAMgHUQ6id0KbFJR7cK400dWNFuGm4"
+            token={handleToken}
+            amount={totalPrice * 100}
+            email={formData.email}
+          />
         </>
       ) : (
-        <p className="half-vh">
+        <p className="full-vh">
           You have not added any product to your cart yet.
         </p>
       )}

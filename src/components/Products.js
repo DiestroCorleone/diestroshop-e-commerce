@@ -5,7 +5,7 @@ export default function Products(props) {
   const [products, setProducts] = useState([]);
 
   function getProducts() {
-    fetch('https://fakestoreapi.com/products?limit=5')
+    fetch('https://fakestoreapi.com/products?limit=6')
       .then((res) => res.json())
       .then((json) => {
         setProducts(json);
