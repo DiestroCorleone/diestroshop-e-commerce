@@ -578,9 +578,14 @@ nav li {
   padding: 1rem;
 }
 
-.float-image-button {
+.float-image-button-right {
   top: 5%;
   right: 5%;
+}
+
+.float-image-button-left {
+  top: 5%;
+  left: 5%;
 }
 
 @media screen and (max-width: 800px) {
