@@ -26,9 +26,9 @@ Inspired by the [react-tutorial](https://react-tutorial.app/) [project](https://
 
 ## To do
 
-- [ ] Integration with [Stripe](https://stripe.com/es-us) for payment.
-- [ ] Pagination for the *Products* page.
-- [ ] Category selection for the products.
+- [x] Integration with [Stripe](https://stripe.com/es-us) for payment.
+- [x] Add Product Details page with the use of the useContext hook.}
+- [ ] Category selection and pagination.
 
 ## Available Scripts
 
