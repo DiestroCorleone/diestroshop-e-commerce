@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Products from './components/Products';
 import Cart from './components/Cart';
 import ProductDetails from './components/ProductDetails';
+import { CartContext } from './components/CartContext';
 
 export default function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -77,23 +78,25 @@ export default function App() {
             .map((item) => item.amount)
             .reduce((prev, curr) => prev + curr, 0)}
         />
-        <Routes>
-          <Route path="/" exact element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route
-            path="/products"
-            exact
-            element={
-              <Products
-                addToCart={addToCart}
-                removeFromCart={removeFromCart}
-                isInCart={isInCart}
-              />
-            }
-          />
-          <Route path="/cart" element={<Cart cart={cart} />} />
-          <Route path="/products/:id" element={<ProductDetails />} />
-        </Routes>
+        <CartContext.Provider value={{ isInCart, removeFromCart, addToCart }}>
+          <Routes>
+            <Route path="/" exact element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route
+              path="/products"
+              exact
+              element={
+                <Products
+                  addToCart={addToCart}
+                  removeFromCart={removeFromCart}
+                  isInCart={isInCart}
+                />
+              }
+            />
+            <Route path="/cart" element={<Cart cart={cart} />} />
+            <Route path="/products/:id" element={<ProductDetails />} />
+          </Routes>
+        </CartContext.Provider>
         <Footer />
       </div>
     </Router>
