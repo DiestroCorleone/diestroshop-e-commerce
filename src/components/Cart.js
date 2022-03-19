@@ -41,7 +41,7 @@ export default function Cart(props) {
   console.log(formData.email);
 
   return (
-    <div className="col-full flex flex-column between padded-hard">
+    <div className="col-full flex flex-column between padded-hard full-vh">
       <h2>Your cart</h2>
       <br />
       {props.cart.length > 0 ? (
