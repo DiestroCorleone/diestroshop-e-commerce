@@ -380,6 +380,11 @@ input[type='reset'] {
   height: auto;
 }
 
+.img-80 {
+  width: 80%;
+  height: auto;
+}
+
 .img-sm {
   width: 3rem;
   height: auto;
