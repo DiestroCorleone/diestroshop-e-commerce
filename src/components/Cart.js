@@ -77,6 +77,7 @@ export default function Cart(props) {
             className="padded border-sm-quaternary col-third rounded-soft"
             onChange={handleFormData}
             value={formData.email}
+            required
           />
           <br />
           <StripeCheckout
